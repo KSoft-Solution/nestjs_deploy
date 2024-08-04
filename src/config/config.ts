@@ -11,6 +11,11 @@ const {
   MAIL_FROM,
   MAIL_PORT,
   DB_NAME,
+  MAIL_SERVICE,
+  REFRESH_TOKEN,
+  CLIENT_ID,
+  CLIENT_SECRET,
+  ACCESS_TOKEN
   //   CLD_CLOUD_NAME,
   //   CLD_API_KEY,
   //   CLD_API_SECRET,
@@ -25,7 +30,12 @@ export const configEnvs = {
   mailPORT: MAIL_PORT,
   mailPassword: MAIL_PASSWORD,
   mailFrom: MAIL_FROM,
-  databaseName:DB_NAME
+  databaseName: DB_NAME,
+  mailService: MAIL_SERVICE,
+  REFRESH_TOKEN,
+  CLIENT_ID,
+  ACCESS_TOKEN,
+  CLIENT_SECRET
   //   cloudinaryName: CLD_CLOUD_NAME,
   //   cloudinaryKey: CLD_API_KEY,
   //   cloudinarySecretKey: CLD_API_SECRET,

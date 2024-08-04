@@ -1,22 +1,42 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
+import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 import { AppModule } from 'src/app.module';
 import { configEnvs } from 'src/config/config';
+import * as session from 'express-session';
+import * as passport from 'passport';
 
 declare const module: any;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
-  app.setGlobalPrefix('api');
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      stopAtFirstError: true,
+      always: true,
+    }),
+  );
+  // app.setGlobalPrefix('api');
   app.enableCors({
     origin: '*',
     methods: 'GET,PATCH,POST,DELETE',
     preflightContinue: false,
     optionsSuccessStatus: 200,
   });
+  app.enableVersioning({
+    type: VersioningType.URI,
+  });
+  app.use(
+    session({
+      secret: 'SECRET',
+      resave: false,
+      saveUninitialized: false,
+    }),
+  );
+  app.use(passport.initialize());
+  app.use(passport.session());
   const config = new DocumentBuilder()
     .setTitle('Elecload India')
     .setDescription(
