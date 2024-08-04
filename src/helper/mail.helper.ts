@@ -1,10 +1,7 @@
 import * as nodemailer from 'nodemailer';
 import * as hbs from 'nodemailer-express-handlebars';
 import * as path from 'path';
-import { google } from 'googleapis';
 import { configEnvs } from 'src/config/config';
-
-const OAuth2 = google.auth.OAuth2;
 
 export class EmailService {
   public generateOTPCode(): number {
@@ -37,25 +34,6 @@ export class EmailService {
   public async sendEmail(userMail: string, otpCode: number): Promise<void> {
     const mailOptions = this.generateMailOptions(userMail, otpCode);
     const handlebarsOptions = this.generateHandlebarOptions();
-
-    const oauth2Client = new OAuth2(
-      configEnvs.CLIENT_ID,
-      configEnvs.CLIENT_SECRET,
-      'https://developers.google.com/oauthplayground',
-    );
-
-    oauth2Client.setCredentials({
-      refresh_token: configEnvs.REFRESH_TOKEN,
-    });
-
-    // const accessToken = await new Promise((resolve, reject) => {
-    //   oauth2Client.getAccessToken((err, token) => {
-    //     if (err) {
-    //       reject('Failed to create access token :(');
-    //     }
-    //     resolve(token);
-    //   });
-    // });
 
     const transport = nodemailer.createTransport({
       host: configEnvs?.mailSMPT,
