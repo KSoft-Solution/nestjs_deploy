@@ -1,13 +1,11 @@
-import { v2 } from 'cloudinary';
+import { v2 as cloudinary } from 'cloudinary';
 import { configEnvs } from 'src/config/config';
-import { CLOUDINARY } from './constants';
-
 
 export const CloudinaryProvider = {
-  provide: CLOUDINARY,
+  provide: 'CLOUDINARY',
   useFactory: () => {
-    return v2.config({
-      cloud_name: configEnvs?.cloudinaryKey,
+    return cloudinary.config({
+      cloud_name: configEnvs?.cloudinaryName,
       api_key: configEnvs?.cloudinaryKey,
       api_secret: configEnvs?.cloudinarySecretKey,
     });

@@ -32,7 +32,6 @@ export class AuthService {
         userId: user._id,
       };
     } catch (error) {
-      console.log(error,'error')
       return this.errorResponse.handleError(res, 500, error.message);
     }
   }
