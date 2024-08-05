@@ -1,0 +1,1 @@
+GET http://localhost:7000/api/brand/get_all_brands

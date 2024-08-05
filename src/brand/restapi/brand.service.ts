@@ -8,7 +8,7 @@ import {
 } from 'src/brand/restapi/dto/brand.dto';
 import { Brand } from 'src/brand/restapi/interface/brand.interface';
 
-@Injectable()
+
 @Injectable()
 export class BrandService {
   constructor(@InjectModel('Brand') private brandModel: Model<Brand>) {}

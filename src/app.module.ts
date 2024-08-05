@@ -24,6 +24,7 @@ import { UserModule } from 'src/user/user.module';
 import { EventsModule } from 'src/websocket/websocket.module';
 import { CloudinaryModule } from 'src/cloudinary/cloudinary.module';
 import { BrandModule } from 'src/brand/brand.module';
+import { CategoryModule } from 'src/category/category.module';
 
 import { UploadController } from 'src/upload/upload.controller';
 import { UploadService } from './upload/upload.service';
@@ -60,6 +61,7 @@ import { UploadService } from './upload/upload.service';
     EventsModule,
     CloudinaryModule,
     BrandModule,
+    CategoryModule
   ],
   controllers: [UploadController],
   providers: [JWTService, ErrorResponse, UploadService],
