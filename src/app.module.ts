@@ -9,6 +9,8 @@ import {
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { JwtModule } from '@nestjs/jwt';
+import { MulterModule } from '@nestjs/platform-express';
+import { memoryStorage } from 'multer';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
@@ -20,6 +22,11 @@ import { LoggerMiddleware } from 'src/middleware/logger.middleware';
 import { AuthModule } from 'src/auth/auth.module';
 import { UserModule } from 'src/user/user.module';
 import { EventsModule } from 'src/websocket/websocket.module';
+import { CloudinaryModule } from 'src/cloudinary/cloudinary.module';
+import { BrandModule } from 'src/brand/brand.module';
+
+import { UploadController } from 'src/upload/upload.controller';
+import { UploadService } from './upload/upload.service';
 
 @Global()
 @Module({
@@ -37,6 +44,10 @@ import { EventsModule } from 'src/websocket/websocket.module';
     //   //      numberScalarMode: 'integer',
     //   //   },
     // }),
+    MulterModule.register({
+      dest: './files',
+      storage: memoryStorage(),
+    }),
     JwtModule.register({
       secret: configEnvs.jwt_secret_key,
       signOptions: {
@@ -46,11 +57,13 @@ import { EventsModule } from 'src/websocket/websocket.module';
     }),
     AuthModule,
     UserModule,
-    EventsModule
+    EventsModule,
+    CloudinaryModule,
+    BrandModule,
   ],
-  controllers: [],
-  providers: [JWTService, ErrorResponse],
-  exports: [JWTService, ErrorResponse],
+  controllers: [UploadController],
+  providers: [JWTService, ErrorResponse, UploadService],
+  exports: [JWTService, ErrorResponse, UploadService],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

@@ -1,16 +1,24 @@
 import { NestFactory } from '@nestjs/core';
 import { ValidationPipe, VersioningType } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import * as session from 'express-session';
+import * as passport from 'passport';
+const MongoDBStore = require('connect-mongodb-session')(session);
 
 import { AppModule } from 'src/app.module';
 import { configEnvs } from 'src/config/config';
-import * as session from 'express-session';
-import * as passport from 'passport';
+import { corsConfig, sessionConfig } from 'src/helper/config.helper';
 
 declare const module: any;
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { cors: true });
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    cors: true,
+  });
+  app.set('trust proxy', 1); // trust first proxy
+  app.setGlobalPrefix('api');
+  app.enableCors(corsConfig());
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -18,13 +26,6 @@ async function bootstrap() {
       always: true,
     }),
   );
-  // app.setGlobalPrefix('api');
-  app.enableCors({
-    origin: '*',
-    methods: 'GET,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 200,
-  });
   app.enableVersioning({
     type: VersioningType.URI,
   });
@@ -35,6 +36,7 @@ async function bootstrap() {
       saveUninitialized: false,
     }),
   );
+  app.use(session(sessionConfig(MongoDBStore)));
   app.use(passport.initialize());
   app.use(passport.session());
   const config = new DocumentBuilder()

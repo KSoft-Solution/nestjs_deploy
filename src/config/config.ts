@@ -15,10 +15,13 @@ const {
   REFRESH_TOKEN,
   CLIENT_ID,
   CLIENT_SECRET,
-  ACCESS_TOKEN
-  //   CLD_CLOUD_NAME,
-  //   CLD_API_KEY,
-  //   CLD_API_SECRET,
+  ACCESS_TOKEN,
+  CLOUDINARY_NAME,
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET,
+  CLIENT_URL,
+  SESSION_KEY,
+  NODE_ENV
 } = process.env;
 
 export const configEnvs = {
@@ -32,11 +35,14 @@ export const configEnvs = {
   mailFrom: MAIL_FROM,
   databaseName: DB_NAME,
   mailService: MAIL_SERVICE,
+  cloudinaryName: CLOUDINARY_NAME,
+  cloudinaryKey: CLOUDINARY_API_KEY,
+  cloudinarySecretKey: CLOUDINARY_API_SECRET,
   REFRESH_TOKEN,
+  NODE_ENV,
   CLIENT_ID,
   ACCESS_TOKEN,
-  CLIENT_SECRET
-  //   cloudinaryName: CLD_CLOUD_NAME,
-  //   cloudinaryKey: CLD_API_KEY,
-  //   cloudinarySecretKey: CLD_API_SECRET,
+  CLIENT_SECRET,
+  CLIENT_URL,
+  SESSION_KEY,
 };
