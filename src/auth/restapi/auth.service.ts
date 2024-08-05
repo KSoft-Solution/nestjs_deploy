@@ -5,10 +5,12 @@ import { ErrorResponse } from 'src/helper/error.helper';
 import { EmailService } from 'src/helper/mail.helper';
 import { JWTService } from 'src/helper/jwt.helper';
 import { AuthModel } from 'src/database/models/auth.model';
+import { MailService } from 'src/mail/mail.service';
 @Injectable()
 export class AuthService {
   constructor(
     private readonly emailService: EmailService,
+    private readonly mailService: MailService,
     private readonly authQueries: AuthModel,
     private readonly jwtService: JWTService,
     private readonly errorResponse: ErrorResponse,
@@ -22,7 +24,7 @@ export class AuthService {
       if (!user) user = await this.authQueries.createNewUser(email, otpCode);
       else await this.authQueries.updateUserOTP(email, otpCode);
 
-      await this.emailService.sendEmail(email, otpCode);
+      await this.mailService.sendUserConfirmation(email, otpCode);
 
       return {
         success: true,

@@ -9,6 +9,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 import { AppModule } from 'src/app.module';
 import { configEnvs } from 'src/config/config';
 import { corsConfig, sessionConfig } from 'src/helper/config.helper';
+import { join } from 'path';
 
 declare const module: any;
 
@@ -36,6 +37,9 @@ async function bootstrap() {
       saveUninitialized: false,
     }),
   );
+  app.useStaticAssets(join(__dirname, '..', 'public'));
+  app.setBaseViewsDir(join(__dirname, '..', 'views'));
+  app.setViewEngine('hbs');
   app.use(session(sessionConfig(MongoDBStore)));
   app.use(passport.initialize());
   app.use(passport.session());

@@ -22,11 +22,12 @@ import { BrandModule } from 'src/brand/brand.module';
 import { CategoryModule } from 'src/category/category.module';
 import { SubcategoryModule } from 'src/subcategory/subcategory.module';
 import { ProductModule } from 'src/product/product.module';
+import { MailModule } from 'src/mail/mail.module';
 import { EventsModule } from 'src/websocket/websocket.module';
 import { CloudinaryModule } from 'src/cloudinary/cloudinary.module';
 
 import { UploadController } from 'src/upload/upload.controller';
-import { UploadService } from './upload/upload.service';
+import { UploadService } from 'src/upload/upload.service';
 
 @Global()
 @Module({
@@ -53,7 +54,8 @@ import { UploadService } from './upload/upload.service';
     BrandModule,
     CategoryModule,
     SubcategoryModule,
-    ProductModule
+    ProductModule,
+    MailModule
   ],
   controllers: [UploadController],
   providers: [JWTService, ErrorResponse, UploadService],
