@@ -7,10 +7,8 @@ import {
     Post,
     Put,
     Res,
-    // UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-//   import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
 import { CategoryService } from 'src/category/restapi/category.service';
 import {
@@ -19,7 +17,6 @@ import {
 } from 'src/category/restapi/dto/category.dto';
 import { Category } from 'src/category/restapi/interface/category.interface';
 
-//   @UseGuards(JwtAuthGuard)
 @Controller('/category')
 @ApiTags('Category')
 export class CategoryController {

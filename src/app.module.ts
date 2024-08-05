@@ -1,4 +1,3 @@
-import { join } from 'path';
 import {
   Global,
   Module,
@@ -11,8 +10,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { JwtModule } from '@nestjs/jwt';
 import { MulterModule } from '@nestjs/platform-express';
 import { memoryStorage } from 'multer';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 import { configEnvs } from 'src/config/config';
 import { ErrorResponse } from 'src/helper/error.helper';
@@ -21,10 +18,12 @@ import { LoggerMiddleware } from 'src/middleware/logger.middleware';
 
 import { AuthModule } from 'src/auth/auth.module';
 import { UserModule } from 'src/user/user.module';
-import { EventsModule } from 'src/websocket/websocket.module';
-import { CloudinaryModule } from 'src/cloudinary/cloudinary.module';
 import { BrandModule } from 'src/brand/brand.module';
 import { CategoryModule } from 'src/category/category.module';
+import { SubcategoryModule } from 'src/subcategory/subcategory.module';
+import { ProductModule } from 'src/product/product.module';
+import { EventsModule } from 'src/websocket/websocket.module';
+import { CloudinaryModule } from 'src/cloudinary/cloudinary.module';
 
 import { UploadController } from 'src/upload/upload.controller';
 import { UploadService } from './upload/upload.service';
@@ -36,15 +35,6 @@ import { UploadService } from './upload/upload.service';
     MongooseModule.forRoot(configEnvs.mongoURL, {
       dbName: configEnvs.databaseName,
     }),
-    // GraphQLModule.forRoot<ApolloDriverConfig>({
-    //   driver: ApolloDriver,
-    //   introspection: true,
-    //   fieldResolverEnhancers: ['guards'],
-    //   autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-    //   //   buildSchemaOptions: {
-    //   //      numberScalarMode: 'integer',
-    //   //   },
-    // }),
     MulterModule.register({
       dest: './files',
       storage: memoryStorage(),
@@ -61,7 +51,9 @@ import { UploadService } from './upload/upload.service';
     EventsModule,
     CloudinaryModule,
     BrandModule,
-    CategoryModule
+    CategoryModule,
+    SubcategoryModule,
+    ProductModule
   ],
   controllers: [UploadController],
   providers: [JWTService, ErrorResponse, UploadService],
@@ -72,6 +64,6 @@ export class AppModule implements NestModule {
     consumer
       .apply(LoggerMiddleware)
       .exclude({ path: 'api/v1/reviews/:productId', method: RequestMethod.GET })
-      .forRoutes({ path: 'api/v1/user', method: RequestMethod.ALL });
+      .forRoutes({ path: 'api/brand/get_all_brands', method: RequestMethod.ALL });
   }
 }
