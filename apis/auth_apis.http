@@ -1,0 +1,24 @@
+# ELECLOAD_URL = http://nestjs-deploy-sjsr.onrender.com
+# LOCALHOST_URL = http://localhost:7000
+
+########################################## to get auth login[WORKING FINE] ###############################
+# GET http://nestjs-deploy-sjsr.onrender.com/api/auth/brand
+POST http://localhost:7000/api/auth/login
+
+content-type: application/json
+
+{
+  "email": "kanhasahu955902@gmail.com"
+}
+
+
+
+########################################## to get auth VERIFY EMAIL {USERID}[WORKING FINE] ###############################
+# GET http://nestjs-deploy-sjsr.onrender.com/api/auth/brand
+POST http://localhost:7000/api/auth/verify-email/64149035cf732fb7ea6ed435
+
+content-type: application/json
+
+{
+  "otpCode": 235158
+}

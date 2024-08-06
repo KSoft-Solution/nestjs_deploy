@@ -1,0 +1,137 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "elecload",
+    "collectionId": "35dca612-3f58-434e-8357-284c12a0e678",
+    "dateExported": "2024-08-06T13:25:37.943Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "19f9d556-dee7-4b48-89dc-d6331bc8c356",
+            "name": "brand_apis",
+            "containerId": "",
+            "created": "2024-08-06T10:47:50.923Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "cdc87686-f7ca-450f-aac4-9b283bd7b923",
+            "name": "auth",
+            "containerId": "",
+            "created": "2024-08-06T11:55:48.941Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "9eaf7368-ea3b-4e4f-9a20-1481bebf56f9",
+            "name": "category",
+            "containerId": "",
+            "created": "2024-08-06T12:28:30.323Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "094b456d-b310-4796-a59e-fdf814fa92ca",
+            "colId": "35dca612-3f58-434e-8357-284c12a0e678",
+            "containerId": "19f9d556-dee7-4b48-89dc-d6331bc8c356",
+            "name": "get_all_brands",
+            "url": "{{ELECLOAD_URL}}/brand/get_all_brands",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-08-06T10:48:30.109Z",
+            "modified": "2024-08-06T10:48:30.109Z",
+            "headers": []
+        },
+        {
+            "_id": "9513a72f-94c4-4983-b96d-3e096ea9ba27",
+            "colId": "35dca612-3f58-434e-8357-284c12a0e678",
+            "containerId": "19f9d556-dee7-4b48-89dc-d6331bc8c356",
+            "name": "create",
+            "url": "{{ELECLOAD_URL}}/brand/create",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-08-06T10:53:53.733Z",
+            "modified": "2024-08-06T10:56:28.956Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"reliance\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "4ced9c3b-6a4b-497c-b0c5-b6a4feed27e8",
+            "colId": "35dca612-3f58-434e-8357-284c12a0e678",
+            "containerId": "19f9d556-dee7-4b48-89dc-d6331bc8c356",
+            "name": "brand_by_id",
+            "url": "{{ELECLOAD_URL}}/brand/66b010ce7b499e9e3d1bce5f",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-08-06T10:55:53.865Z",
+            "modified": "2024-08-06T10:55:53.865Z",
+            "headers": []
+        },
+        {
+            "_id": "f6c33f1c-31fd-469a-ad8e-778f963f1878",
+            "colId": "35dca612-3f58-434e-8357-284c12a0e678",
+            "containerId": "cdc87686-f7ca-450f-aac4-9b283bd7b923",
+            "name": "login",
+            "url": "{{ELECLOAD_URL}}/auth/login",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-08-06T11:56:25.449Z",
+            "modified": "2024-08-06T11:56:25.449Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\":\"kumarmantudash@gmail.com\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "f14a9ca7-fe4e-45a9-800a-d0e3597a9928",
+            "colId": "35dca612-3f58-434e-8357-284c12a0e678",
+            "containerId": "cdc87686-f7ca-450f-aac4-9b283bd7b923",
+            "name": "optCode",
+            "url": "{{ELECLOAD_URL}}/auth/verify-email/66b214a7c8221a7bba450a31",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2024-08-06T12:26:49.745Z",
+            "modified": "2024-08-06T12:26:49.745Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"otpCode\":4442631\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "9a3c70c8-25f1-494f-b564-5ae171a13f88",
+            "colId": "35dca612-3f58-434e-8357-284c12a0e678",
+            "containerId": "9eaf7368-ea3b-4e4f-9a20-1481bebf56f9",
+            "name": "create",
+            "url": "{{ELECLOAD_URL}}/category/create",
+            "method": "POST",
+            "sortNum": 60000,
+            "created": "2024-08-06T13:06:23.018Z",
+            "modified": "2024-08-06T13:15:01.912Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"touch\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "b2146155-0b98-441f-8c3e-8a1e59b77763",
+            "colId": "35dca612-3f58-434e-8357-284c12a0e678",
+            "containerId": "9eaf7368-ea3b-4e4f-9a20-1481bebf56f9",
+            "name": "get_all_categories",
+            "url": "{{ELECLOAD_LOCAL}}/category/get_all_categories",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-08-06T13:24:26.767Z",
+            "modified": "2024-08-06T13:24:26.767Z",
+            "headers": []
+        }
+    ],
+    "ref": "Z04_V3xdJ45YcCSZg2lPVNU2-iTnh9feHLAf_TCrliLHmD715WsmRgUwJh-FFK0iu9RtB9DnLKEdjrkR4x30-w"
+}

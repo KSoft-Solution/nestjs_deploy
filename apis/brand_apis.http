@@ -1,1 +1,37 @@
+# ELECLOAD_URL = http://nestjs-deploy-sjsr.onrender.com
+# LOCALHOST_URL = http://localhost:7000
+
+########################################## to get all brands [working fine] ###############################
+# GET http://nestjs-deploy-sjsr.onrender.com/api/brand/get_all_brands
 GET http://localhost:7000/api/brand/get_all_brands
+
+
+
+########################################## to create a new brand [working fine]  ###############################
+# POST http://nestjs-deploy-sjsr.onrender.com/api/brand/create
+POST http://localhost:7000/api/brand/create
+content-type: application/json
+{
+    "name":"apple"
+}
+
+
+
+########################################## to get detail of  brand [working fine]  ###############################
+# GET http://nestjs-deploy-sjsr.onrender.com/api/brand/66b011017b499e9e3d1bce62
+GET  http://localhost:7000/api/brand/66b011017b499e9e3d1bce62
+
+
+
+########################################## to get api  brand {brandID} [working fine]  ###############################
+# GET http://nestjs-deploy-sjsr.onrender.com/api/brand/66b010ce7b499e9e3d1bce5f
+PUT   http://localhost:7000/api/brand/66b229717124b7a369ca541b
+
+Content-Type: application/json
+
+
+########################################## delete api brand [working fine]  ###############################
+# GET http://nestjs-deploy-sjsr.onrender.com/api/brand/66b010ce7b499e9e3d1bce5f
+DELETE   http://localhost:7000/api/brand/66b229717124b7a369ca541b
+
+Content-Type: application/json
